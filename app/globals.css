@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-uvea-black: #0B0B0D;
+  --color-uvea-charcoal: #121216;
+  --color-uvea-gold: #D4AF37;
+  --color-uvea-navy: #0B1E3B;
+  --color-uvea-red: #B22234;
+  --color-uvea-white: #F7F7F8;
+  --color-uvea-gray: #A8A8B3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0B0B0D;
+  color: #F7F7F8;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-cinzel {
+  font-family: var(--font-cinzel), "Times New Roman", serif;
+}
+
+a {
+  color: #D4AF37;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #F7F7F8;
+}
