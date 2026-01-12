@@ -5,7 +5,7 @@ type Item = {
 
 export default function RichList({ items }: { items: Item[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
       {items.map((item) => (
         <div
           key={item.title}

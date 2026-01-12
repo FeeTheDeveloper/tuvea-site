@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -18,14 +19,26 @@ export default function Navbar() {
     <nav className="bg-uvea-black/95 border-b border-uvea-gold/20 backdrop-blur">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-20 gap-4">
-          {/* Brand */}
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="text-uvea-gold font-cinzel text-2xl font-bold tracking-wider">
-              UVEA
-            </span>
-            <span className="text-uvea-white text-[11px] tracking-wide">
-              United Veterans Empowerment Association
-            </span>
+          {/* Brand + seal */}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="relative h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 lg:h-11 lg:w-11">
+              <Image
+                src="/brand/uvea-seal.webp"
+                alt="UVEA seal"
+                fill
+                sizes="(max-width: 640px) 36px, (max-width: 1024px) 40px, 44px"
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col leading-tight text-left">
+              <span className="text-uvea-gold font-cinzel text-2xl font-bold tracking-wider">
+                UVEA
+              </span>
+              <span className="text-uvea-white text-[11px] sm:text-xs tracking-wide max-w-[12rem] sm:max-w-none">
+                United Veterans Empowerment Association
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -45,7 +58,7 @@ export default function Navbar() {
           <div className="hidden lg:flex">
             <Link
               href="/contact"
-              className="bg-uvea-gold hover:bg-uvea-gold/90 text-uvea-black px-5 py-2 rounded font-bold text-sm tracking-wide transition-colors shadow-md shadow-uvea-gold/30"
+              className="bg-uvea-gold hover:bg-uvea-gold/90 text-uvea-black px-5 py-2 rounded font-bold text-sm tracking-wide transition-colors shadow-md shadow-uvea-gold/30 whitespace-nowrap"
             >
               Contact
             </Link>
