@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── UVEA Brand Palette ── */
+  --color-uvea-black: #0B0B0D;
+  --color-uvea-charcoal: #121216;
+  --color-uvea-gold: #C5A255;
+  --color-uvea-white: #F7F7F8;
+  --color-uvea-gray: #A8A8B3;
+  --color-uvea-navy: #0B1E3B;
+  --color-uvea-red: #B22234;
+
+  /* ── Typography ── */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Cinzel", "Playfair Display", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-uvea-black);
+  color: var(--color-uvea-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus-visible ring for keyboard navigation — gold on dark */
+*:focus-visible {
+  outline: 2px solid var(--color-uvea-gold);
+  outline-offset: 2px;
+}
