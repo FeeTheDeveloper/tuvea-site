@@ -5,7 +5,7 @@ export default function Hero() {
     <section
       aria-label="Hero"
       className="relative flex min-h-screen items-center bg-uvea-black bg-cover bg-center"
-      style={{ backgroundImage: "url('/hero/hero-bg.jpg')" }}
+      style={{ backgroundImage: "url('/hero/hero-bg.png')" }}
     >
       {/* Dark gradient overlay — heavier on the left for text readability */}
       <div

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -23,6 +24,14 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
       >
         <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/brand/uvea-emblem.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9"
+            priority
+          />
           <span className="text-xl font-display font-bold tracking-tight text-uvea-gold">
             TUVEA
           </span>

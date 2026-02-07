@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = [
@@ -16,11 +17,20 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <div>
-            <p className="text-lg font-display font-bold tracking-tight">
-              TUVEA
-            </p>
-            <p className="mt-1 text-sm text-uvea-gray">
+          <div className="flex flex-col items-center gap-3 md:items-start">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/brand/uvea-emblem.png"
+                alt="TUVEA emblem"
+                width={48}
+                height={48}
+                className="h-12 w-12"
+              />
+              <p className="text-lg font-display font-bold tracking-tight">
+                TUVEA
+              </p>
+            </div>
+            <p className="text-sm text-uvea-gray">
               Transforming Urban &amp; Vulnerable Environments through Advocacy
             </p>
           </div>
