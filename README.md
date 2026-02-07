@@ -1,33 +1,70 @@
 # TUVEA — Transforming Urban & Vulnerable Environments through Advocacy
 
-Public website for **TUVEA**, a veteran-focused community organization delivering housing navigation, benefits guidance, workforce development, mental health resources, and family support across Texas and beyond.
+Public website for **TUVEA** (United Veterans Empowerment Association), a veteran-focused community organization delivering housing navigation, benefits guidance, workforce development, mental health resources, and family support across Texas and beyond.
 
 Built with [Next.js 14](https://nextjs.org/) (App Router), [Tailwind CSS 4](https://tailwindcss.com/), and TypeScript.
 
 ---
 
-## Getting Started
+## Quick Start (Fresh Deploy)
 
 ```bash
-# Install dependencies
+# 1. Clone the repository
+git clone https://github.com/FeeTheDeveloper/tuvea-site.git
+cd tuvea-site
+
+# 2. Install dependencies
 npm install
 
-# Start development server (http://localhost:3000)
+# 3. Start development server (http://localhost:3000)
 npm run dev
-
-# Production build
-npm run build
-
-# Serve production build
-npm start
 ```
 
-### Other Scripts
+### Production Build
+
+```bash
+npm run build   # Generates .next/ output
+npm start       # Starts production server on port 3000
+```
+
+### All Scripts
 
 | Script | Description |
 |--------|-------------|
+| `npm run dev` | Start local dev server with hot reload |
+| `npm run build` | Production build |
+| `npm start` | Serve production build (port 3000) |
 | `npm run lint` | Run Next.js ESLint checks |
-| `npm run check:links` | Validate all external URLs in the codebase (housing resources + help links) |
+| `npm run check:links` | Validate all external URLs in the codebase |
+
+---
+
+## Deployment
+
+### Vercel (recommended)
+
+1. Connect the GitHub repository at [vercel.com/new](https://vercel.com/new)
+2. Framework preset: **Next.js** (auto-detected)
+3. Build command: `npm run build` (default)
+4. Output directory: `.next` (default)
+5. No environment variables required
+6. Deploy
+
+Vercel will auto-deploy on every push to `main`.
+
+### Netlify / Render / Railway
+
+Use the same build command (`npm run build`) and start command (`npm start`). The `/api/support-request` route requires a **Node.js runtime** — it will not work on static-only hosts.
+
+### Docker / Self-Hosted
+
+```bash
+npm install
+npm run build
+PORT=3000 npm start
+```
+
+Node.js 18+ required.
 
 ---
 
@@ -58,14 +95,21 @@ app/
 components/
 ├── ConciergeWidget.tsx        # Floating bottom-right concierge panel (crisis, help, housing, GPT link)
 ├── CrisisBanner.tsx           # Sticky top banner — 988 hotline, text 838255
-├── Footer.tsx
-├── Hero.tsx
-├── Navbar.tsx
+├── Footer.tsx                 # Site footer with emblem, links, copyright
+├── Hero.tsx                   # Full-screen hero with background image
+├── Navbar.tsx                 # Sticky nav with emblem + responsive mobile menu
 ├── ProgramCard.tsx
 ├── ResourceGrid.tsx
 ├── ResourceSection.tsx
 ├── Section.tsx                # Reusable section wrapper (gold headings, black/charcoal bg)
 └── SupportRequestForm.tsx     # Client-side form with validation → /api/support-request
+
+public/
+├── brand/
+│   ├── uvea-emblem.png        # TUVEA emblem (used in Navbar + Footer)
+│   └── uvea-star.png          # Star mark (available for additional use)
+└── hero/
+    └── hero-bg.png            # Hero section background image
 
 src/data/resources/
 └── housing.ts                 # Structured housing resource data (DFW, statewide, national)
@@ -76,6 +120,18 @@ scripts/
 styles/
 └── globals.css                # Tailwind theme — UVEA brand palette, typography
 ```
+
+---
+
+## Brand Assets
+
+| File | Location | Used In |
+|------|----------|---------|
+| `uvea-emblem.png` | `public/brand/` | Navbar, Footer |
+| `uvea-star.png` | `public/brand/` | Available (not yet placed) |
+| `hero-bg.png` | `public/hero/` | Hero section background |
+
+All assets in `public/` are served at the root path (e.g., `/brand/uvea-emblem.png`).
 
 ---
 
@@ -91,39 +147,31 @@ styles/
 | `uvea-navy` | `#0B1E3B` | Crisis banner background |
 | `uvea-red` | `#B22234` | Reserved (alerts) |
 
-**Fonts:** Cinzel (display/headings), Inter (body)
+**Fonts:** Cinzel (display / headings), Inter (body)
 
----
-
-## Deployment
-
-The site is a standard Next.js application and can be deployed to any platform that supports Node.js or static export.
-
-### Vercel (recommended)
-
-1. Connect the GitHub repository at [vercel.com/new](https://vercel.com/new)
-2. Framework preset: **Next.js** (auto-detected)
-3. No environment variables are required for the current build
-4. Deploy
-
-### Other platforms
-
-```bash
-npm run build   # Generates .next/ output
-npm start       # Starts production server on port 3000
-```
-
-The `/api/support-request` route requires a Node.js runtime. If deploying as a static export, replace it with an external form handler.
+Defined in [`styles/globals.css`](styles/globals.css) and [`tailwind.config.ts`](tailwind.config.ts).
 
 ---
 
 ## Environment Variables
 
-None required at this time. When a real form backend is wired up, add:
+None required for the current build. Future integrations:
 
 | Variable | Purpose |
 |----------|---------|
-| `SUPPORT_REQUEST_ENDPOINT` | Backend URL for the support request form (future) |
+| `SUPPORT_REQUEST_ENDPOINT` | Backend URL for the support request form |
+
+---
+
+## Post-Deploy Checklist
+
+- [ ] Verify all pages load (`/`, `/get-help`, `/programs/*`, `/resources/housing`, `/partner`)
+- [ ] Confirm brand images render in Navbar and Footer
+- [ ] Confirm hero background image loads on home page
+- [ ] Test support request form submission (`/get-help`)
+- [ ] Run `npm run check:links` to validate external URLs
+- [ ] Verify CrisisBanner 988 tel: link works on mobile
+- [ ] Check floating ConciergeWidget opens/closes on mobile and desktop
 
 ---
 
