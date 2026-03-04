@@ -12,7 +12,7 @@ export default function Hero() {
         alt="Diverse group of American military veterans standing together representing unity and resilience"
         fill
         priority
-        className="object-cover"
+        className="object-cover object-top"
         sizes="100vw"
       />
       {/* Dark gradient overlay — heavier on the left for text readability */}
