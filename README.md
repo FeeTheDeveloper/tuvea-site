@@ -47,10 +47,13 @@ npm start       # Starts production server on port 3000
 2. Framework preset: **Next.js** (auto-detected)
 3. Build command: `npm run build` (default)
 4. Output directory: `.next` (default)
-5. No environment variables required
-6. Deploy
+5. Node.js version: **20.x** (set in Project Settings → General → Node.js Version)
+6. No environment variables required
+7. Deploy
 
 Vercel will auto-deploy on every push to `main`.
+
+> **Image optimization:** All images use `next/image`, which Vercel optimizes automatically at the edge (WebP/AVIF, responsive sizes). No additional configuration is needed — the default `next.config.js` handles local images from `public/`.
 
 ### Netlify / Render / Railway
 
@@ -108,8 +111,15 @@ public/
 ├── brand/
 │   ├── uvea-emblem.png        # TUVEA emblem (used in Navbar + Footer)
 │   └── uvea-star.png          # Star mark (available for additional use)
-└── hero/
-    └── hero-bg.png            # Hero section background image
+├── hero/
+│   └── hero-bg.png            # Legacy hero background
+└── images/tuvea/              # Veteran diversity imagery (PNG, used via next/image)
+    ├── hero-veterans.png
+    ├── counseling-support.png
+    ├── workforce-training.png
+    ├── veteran-housing.png
+    ├── community-event.png
+    └── female-veteran-leader.png
 
 src/data/resources/
 └── housing.ts                 # Structured housing resource data (DFW, statewide, national)
@@ -129,9 +139,22 @@ styles/
 |------|----------|---------|
 | `uvea-emblem.png` | `public/brand/` | Navbar, Footer |
 | `uvea-star.png` | `public/brand/` | Available (not yet placed) |
-| `hero-bg.png` | `public/hero/` | Hero section background |
+| `hero-bg.png` | `public/hero/` | Legacy hero background (replaced by veteran imagery) |
 
-All assets in `public/` are served at the root path (e.g., `/brand/uvea-emblem.png`).
+### Veteran Imagery (`public/images/tuvea/`)
+
+All images use `next/image` with responsive `sizes`, lazy loading (hero uses `priority`), `rounded-xl shadow-lg`, and descriptive alt text.
+
+| File | Used In | Alt Text |
+|------|---------|----------|
+| `hero-veterans.png` | Hero section (homepage) | Diverse group of American military veterans standing together representing unity and resilience |
+| `counseling-support.png` | Mental Health program page | Veterans participating in a supportive counseling session |
+| `workforce-training.png` | Employment program page | Diverse veterans participating in job training and career development |
+| `veteran-housing.png` | Housing resource page | Veteran family celebrating moving into a new home |
+| `community-event.png` | Homepage — Community Impact | Veterans and families gathering at a community support event |
+| `female-veteran-leader.png` | About — Leadership & Representation | Confident female military veteran representing leadership and resilience |
+
+All assets in `public/` are served at the root path (e.g., `/brand/uvea-emblem.png`, `/images/tuvea/hero-veterans.png`).
 
 ---
 
@@ -167,11 +190,14 @@ None required for the current build. Future integrations:
 
 - [ ] Verify all pages load (`/`, `/get-help`, `/programs/*`, `/resources/housing`, `/partner`)
 - [ ] Confirm brand images render in Navbar and Footer
-- [ ] Confirm hero background image loads on home page
+- [ ] Confirm hero veteran image loads on home page (priority, no layout shift)
+- [ ] Verify veteran imagery loads on Mental Health, Employment, Housing, About, and Homepage sections
+- [ ] Confirm TVC Entrepreneur VVL sign-up link works on `/programs/entrepreneurship`
 - [ ] Test support request form submission (`/get-help`)
 - [ ] Run `npm run check:links` to validate external URLs
 - [ ] Verify CrisisBanner 988 tel: link works on mobile
 - [ ] Check floating ConciergeWidget opens/closes on mobile and desktop
+- [ ] Confirm images are responsive and lazy-loaded on mobile
 
 ---
 

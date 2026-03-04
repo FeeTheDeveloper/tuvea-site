@@ -1,12 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section
       aria-label="Hero"
-      className="relative flex min-h-screen items-center bg-uvea-black bg-cover bg-center"
-      style={{ backgroundImage: "url('/hero/hero-bg.png')" }}
+      className="relative flex min-h-[80vh] items-center bg-uvea-black"
     >
+      <Image
+        src="/images/tuvea/hero-veterans.png"
+        alt="Diverse group of American military veterans standing together representing unity and resilience"
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+      />
       {/* Dark gradient overlay — heavier on the left for text readability */}
       <div
         className="absolute inset-0 bg-gradient-to-r from-uvea-black via-uvea-black/85 to-uvea-black/40"

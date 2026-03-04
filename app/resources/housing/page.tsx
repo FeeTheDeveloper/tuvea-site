@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Section from "@/components/Section";
 import ResourceSection from "@/components/ResourceSection";
 import { HOUSING_GROUPS } from "@/src/data/resources/housing";
@@ -37,6 +38,14 @@ export default function HousingPage() {
     <>
       {/* ── Page Header ── */}
       <Section id="housing-header" heading="Housing & Stability" className="bg-uvea-charcoal">
+        <Image
+          src="/images/tuvea/veteran-housing.png"
+          alt="Veteran family celebrating moving into a new home"
+          width={1600}
+          height={900}
+          className="mx-auto mb-10 w-full max-w-4xl rounded-xl shadow-lg object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+        />
         <p className="mx-auto mb-4 max-w-3xl text-center text-lg leading-relaxed text-uvea-gray">
           Start here if you are homeless, at risk of homelessness, or need
           housing support. Stable housing is the foundation for every other form

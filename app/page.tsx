@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 
@@ -71,6 +72,14 @@ export default function HomePage() {
       </Section>
 
       <Section id="impact" heading="Community Impact" className="bg-uvea-charcoal">
+        <Image
+          src="/images/tuvea/community-event.png"
+          alt="Veterans and families gathering at a community support event"
+          width={1600}
+          height={900}
+          className="mx-auto mb-10 w-full max-w-4xl rounded-xl shadow-lg object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+        />
         <div className="grid gap-8 sm:grid-cols-3 text-center">
           {[
             { stat: "5,000+", label: "Individuals served annually" },

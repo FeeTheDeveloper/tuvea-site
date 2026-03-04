@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Section from "@/components/Section";
 
 export const metadata: Metadata = {
@@ -62,6 +63,14 @@ export default function MentalHealthPage() {
         heading="Mental Health & Recovery Support"
         className="bg-uvea-charcoal"
       >
+        <Image
+          src="/images/tuvea/counseling-support.png"
+          alt="Veterans participating in a supportive counseling session"
+          width={1600}
+          height={900}
+          className="mx-auto mb-10 w-full max-w-4xl rounded-xl shadow-lg object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+        />
         <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-uvea-gray">
           The invisible wounds of service — PTSD, traumatic brain injury,
           depression, anxiety, substance use — are real, and they deserve real

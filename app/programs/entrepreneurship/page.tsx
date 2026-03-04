@@ -131,11 +131,35 @@ export default function EntrepreneurshipPage() {
         </ul>
       </Section>
 
+      {/* ── TVC Entrepreneur VVL ── */}
+      <Section
+        id="tvc-entrepreneur-vvl"
+        heading="Texas Veteran's Commission Entrepreneur VVL"
+        className="bg-uvea-charcoal"
+      >
+        <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-uvea-gray">
+          The Texas Veteran&rsquo;s Commission Entrepreneur Verified Veteran-Led
+          (VVL) program helps veteran business owners gain recognition and access
+          exclusive resources. Sign up through the TVC portal to connect with a
+          business consultant and start building your verified veteran-led brand.
+        </p>
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://tvc.my.salesforce-sites.com/businessConsultant"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg bg-uvea-gold px-8 py-3 text-lg font-semibold text-uvea-black transition hover:bg-uvea-gold/90"
+          >
+            Sign Up Now
+          </a>
+        </div>
+      </Section>
+
       {/* ── CTA ── */}
       <Section
         id="entrepreneurship-cta"
         heading="Ready to Get Started?"
-        className="bg-uvea-charcoal"
+        className="bg-uvea-black"
       >
         <div className="flex justify-center">
           <Link

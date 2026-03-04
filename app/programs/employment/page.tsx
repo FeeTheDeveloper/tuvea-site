@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Section from "@/components/Section";
 
 export const metadata: Metadata = {
@@ -61,6 +62,14 @@ export default function EmploymentPage() {
         heading="Employment Readiness"
         className="bg-uvea-charcoal"
       >
+        <Image
+          src="/images/tuvea/workforce-training.png"
+          alt="Diverse veterans participating in job training and career development"
+          width={1600}
+          height={900}
+          className="mx-auto mb-10 w-full max-w-4xl rounded-xl shadow-lg object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+        />
         <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-uvea-gray">
           The transition from military service to the civilian workforce is one
           of the most challenging adjustments veterans face. Employers often
