@@ -3,8 +3,11 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 
-/** Placeholder — replace with the real GPT URL when available. */
-const CONCIERGE_GPT_URL = "https://chat.openai.com/g/uvea-veteran-concierge";
+// URL for the UVEA Concierge GPT.
+// Configure in Vercel using NEXT_PUBLIC_CONCIERGE_GPT_URL.
+const CONCIERGE_GPT_URL =
+  process.env.NEXT_PUBLIC_CONCIERGE_GPT_URL ||
+  "https://chat.openai.com";
 
 export default function ConciergeWidget() {
   const [open, setOpen] = useState(false);
