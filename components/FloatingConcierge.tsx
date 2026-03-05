@@ -2,6 +2,12 @@
 
 import { useState, useRef, useEffect } from "react";
 
+// URL for the UVEA Concierge GPT.
+// Configure in Vercel using NEXT_PUBLIC_CONCIERGE_GPT_URL.
+const CONCIERGE_GPT_URL =
+  process.env.NEXT_PUBLIC_CONCIERGE_GPT_URL ||
+  "https://chat.openai.com";
+
 export default function FloatingConcierge() {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -100,7 +106,7 @@ export default function FloatingConcierge() {
 
             {/* Option 2 — External GPT link */}
             <a
-              href="https://chat.openai.com/g/uvea-veteran-concierge"
+              href={CONCIERGE_GPT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex w-full items-center gap-3 rounded-lg border border-uvea-white/10 bg-uvea-black px-4 py-3.5 text-left transition-all duration-200 hover:border-uvea-gold/40 hover:shadow-md"
