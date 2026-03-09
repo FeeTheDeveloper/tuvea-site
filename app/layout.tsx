@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CrisisBanner from "@/components/CrisisBanner";
-import ConciergeWidget from "@/components/ConciergeWidget";
 
 export const metadata: Metadata = {
   title: {
@@ -44,7 +43,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <ConciergeWidget />
       </body>
     </html>
   );

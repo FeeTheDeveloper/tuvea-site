@@ -28,7 +28,36 @@ const steps = [
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* ── Full-width header background ── */}
+      <section
+        aria-label="Header"
+        className="relative flex min-h-[60vh] items-center justify-center bg-uvea-black"
+      >
+        <Image
+          src="/images/tuvea/header-logo.png"
+          alt="TUVEA header logo"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0 bg-uvea-black/60"
+          aria-hidden="true"
+        />
+        <div className="relative z-10 text-center px-6 py-24">
+          <h1 className="text-4xl font-display font-bold leading-tight tracking-tight text-uvea-white sm:text-5xl lg:text-6xl">
+            Transforming Communities
+            <br />
+            Through Advocacy
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-uvea-gray sm:text-xl">
+            Empowering veterans, families, and underserved communities with
+            the resources and support they deserve.
+          </p>
+        </div>
+      </section>
+
       <Section
         id="mission"
         heading="Our Mission"
@@ -71,30 +100,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="impact" heading="Community Impact" className="bg-uvea-charcoal">
-        <Image
-          src="/images/tuvea/community-event.png"
-          alt="Veterans and families gathering at a community support event"
-          width={1600}
-          height={900}
-          className="mx-auto mb-10 w-full max-w-4xl rounded-xl shadow-lg object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
-        />
-        <div className="grid gap-8 sm:grid-cols-3 text-center">
-          {[
-            { stat: "5,000+", label: "Individuals served annually" },
-            { stat: "30+", label: "Community partnerships" },
-            { stat: "12", label: "Active programs" },
-          ].map(({ stat, label }) => (
-            <div key={label}>
-              <p className="text-4xl font-display font-bold text-uvea-gold">
-                {stat}
-              </p>
-              <p className="mt-2 text-uvea-gray">{label}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      {/* ── Hero moved below How It Works ── */}
+      <Hero />
     </>
   );
 }

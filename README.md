@@ -48,7 +48,7 @@ npm start       # Starts production server on port 3000
 3. Build command: `npm run build` (default)
 4. Output directory: `.next` (default)
 5. Node.js version: **20.x** (set in Project Settings → General → Node.js Version)
-6. No environment variables required
+6. No environment variables required — the app has no secrets or API keys
 7. Deploy
 
 Vercel will auto-deploy on every push to `main`.
@@ -75,9 +75,10 @@ Node.js 18+ required.
 
 ```
 app/
-├── layout.tsx                 # Root layout — CrisisBanner, Navbar, Footer, ConciergeWidget
-├── page.tsx                   # Home — mission, how-it-works, community impact
+├── layout.tsx                 # Root layout — CrisisBanner, Navbar, Footer
+├── page.tsx                   # Home — header image, mission, how-it-works, hero
 ├── about/page.tsx             # About TUVEA
+├── community/page.tsx         # Community Impact — stats, community event image
 ├── contact/page.tsx           # Contact information
 ├── get-help/page.tsx          # Crisis support, support request form, what-to-expect, external links
 ├── partner/page.tsx           # Partnership channels, partner benefits, donate/volunteer/hire
@@ -96,7 +97,6 @@ app/
     └── support-request/route.ts  # POST handler (placeholder — logs & returns 200)
 
 components/
-├── ConciergeWidget.tsx        # Floating bottom-right concierge panel (crisis, help, housing, GPT link)
 ├── CrisisBanner.tsx           # Sticky top banner — 988 hotline, text 838255
 ├── Footer.tsx                 # Site footer with emblem, links, copyright
 ├── Hero.tsx                   # Full-screen hero with background image
@@ -109,11 +109,13 @@ components/
 
 public/
 ├── brand/
+│   ├── header-logo.png        # TUVEA header logo (also copied to images/tuvea/)
 │   ├── uvea-emblem.png        # TUVEA emblem (used in Navbar + Footer)
 │   └── uvea-star.png          # Star mark (available for additional use)
 ├── hero/
 │   └── hero-bg.png            # Legacy hero background
 └── images/tuvea/              # Veteran diversity imagery (PNG, used via next/image)
+    ├── header-logo.png        # Homepage header background
     ├── hero-veterans.png
     ├── counseling-support.png
     ├── workforce-training.png
@@ -137,6 +139,7 @@ styles/
 
 | File | Location | Used In |
 |------|----------|---------|
+| `header-logo.png` | `public/brand/`, `public/images/tuvea/` | Homepage header background |
 | `uvea-emblem.png` | `public/brand/` | Navbar, Footer |
 | `uvea-star.png` | `public/brand/` | Available (not yet placed) |
 | `hero-bg.png` | `public/hero/` | Legacy hero background (replaced by veteran imagery) |
@@ -147,11 +150,12 @@ All images use `next/image` with responsive `sizes`, lazy loading (hero uses `pr
 
 | File | Used In | Alt Text |
 |------|---------|----------|
-| `hero-veterans.png` | Hero section (homepage) | Diverse group of American military veterans standing together representing unity and resilience |
+| `header-logo.png` | Homepage header section | TUVEA header logo |
+| `hero-veterans.png` | Hero section (homepage, below How It Works) | Diverse group of American military veterans standing together representing unity and resilience |
 | `counseling-support.png` | Mental Health program page | Veterans participating in a supportive counseling session |
 | `workforce-training.png` | Employment program page | Diverse veterans participating in job training and career development |
 | `veteran-housing.png` | Housing resource page | Veteran family celebrating moving into a new home |
-| `community-event.png` | Homepage — Community Impact | Veterans and families gathering at a community support event |
+| `community-event.png` | Community page (`/community`) | Veterans and families gathering at a community support event |
 | `female-veteran-leader.png` | About — Leadership & Representation | Confident female military veteran representing leadership and resilience |
 
 All assets in `public/` are served at the root path (e.g., `/brand/uvea-emblem.png`, `/images/tuvea/hero-veterans.png`).
@@ -178,7 +182,9 @@ Defined in [`styles/globals.css`](styles/globals.css) and [`tailwind.config.ts`]
 
 ## Environment Variables
 
-None required for the current build. Future integrations:
+None required for the current build. The app has no secrets, API keys, or external service dependencies.
+
+Future integrations:
 
 | Variable | Purpose |
 |----------|---------|
@@ -188,15 +194,15 @@ None required for the current build. Future integrations:
 
 ## Post-Deploy Checklist
 
-- [ ] Verify all pages load (`/`, `/get-help`, `/programs/*`, `/resources/housing`, `/partner`)
+- [ ] Verify all pages load (`/`, `/community`, `/get-help`, `/programs/*`, `/resources/housing`, `/partner`)
+- [ ] Confirm header-logo.png renders as homepage header background
 - [ ] Confirm brand images render in Navbar and Footer
-- [ ] Confirm hero veteran image loads on home page (priority, no layout shift)
-- [ ] Verify veteran imagery loads on Mental Health, Employment, Housing, About, and Homepage sections
+- [ ] Confirm hero veteran image loads on homepage (below How It Works)
+- [ ] Verify veteran imagery loads on Mental Health, Employment, Housing, About, and Community sections
 - [ ] Confirm TVC Entrepreneur VVL sign-up link works on `/programs/entrepreneurship`
 - [ ] Test support request form submission (`/get-help`)
 - [ ] Run `npm run check:links` to validate external URLs
 - [ ] Verify CrisisBanner 988 tel: link works on mobile
-- [ ] Check floating ConciergeWidget opens/closes on mobile and desktop
 - [ ] Confirm images are responsive and lazy-loaded on mobile
 
 ---
